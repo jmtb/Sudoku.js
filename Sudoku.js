@@ -20,54 +20,6 @@
         }
     }
 
-
-    /////////   SudokuBoard functions   //////////
-
-    // Gets the possible boards that can be generated from the current board state.
-    // Returns an array of boards. If the board is finished or blocked, returns an empty array.
-    sudoku.SudokuBoard.prototype.getPossibleBoards = function () {
-        //TODO: trabajando aquiiiiiiiii
-
-        var possBoard = [];
-        var asigned = 0;
-
-        var boardAux = new sudoku.SudokuBoard(this);
-        var poss = boardAux.getPossibleValues();
-
-        // Easy search
-        for (var i = 0; i < poss.length; i++) {
-            for (var j = 0; j < poss[i].length; j++) {
-                if (typeof poss[i][j] !== 'undefined') {
-                    if (poss[i][j].length == 1) {
-                        boardAux.board[i][j] = poss[i][j][0];
-                        asigned++;
-                    }
-                }
-            }
-        }
-
-        if (asigned > 0) { // Unique solutions
-            possBoard.push(boardAux);
-        } else if (asigned <= 0 && !boardAux.isFinished()) { // No unique possibilities
-
-            // Generate 1 board for each possibility
-            for (var i = 0; i < poss.length; i++) {
-                for (var j = 0; j < poss[i].length; j++) {
-                    if (typeof poss[i][j] !== 'undefined') {
-                        for (var w = 0; w < poss[i][j].length; w++) {
-                            var newBoard = new sudoku.SudokuBoard(boardAux);
-                            newBoard.board[i][j] = poss[i][j][w];
-                            possBoard.push(newBoard);
-                        }
-                    }
-                }
-            }
-        }
-
-        return possBoard;
-
-    }
-
     // Gets the count of the no blank cells in the board.
     sudoku.SudokuBoard.prototype.getFilledCount = function () {
 
