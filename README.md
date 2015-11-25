@@ -38,7 +38,7 @@ Or you can get a string from the board:
 ### Iterations and time
 ------
 
-|            | test | average iterations | average time (ms) |
+|            | Test | Average iterations | Average time (ms) |
 |------------:|------|:--------------------:|:--------------:|
 | Javascript | 1000 |      20860.032     | 50.313       |
 
